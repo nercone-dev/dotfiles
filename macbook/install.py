@@ -35,6 +35,7 @@ def run_commands(name: str, commands: list[str]):
 def main():
     run_commands("Install Homebrew", ["/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""])
     run_commands("Install General CLI Tools", ["/opt/homebrew/bin/brew install tree nano git gh fastfetch htop btop"])
+    run_commands("Install Rustup", ["curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"])
     run_commands("Install Tailscale", ["/opt/homebrew/bin/brew install --cask tailscale-app"])
     run_commands("Install FFmpeg", ["/opt/homebrew/bin/brew install ffmpeg"])
     run_commands("Install GnuPG", ["/opt/homebrew/bin/brew install gnupg"])

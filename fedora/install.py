@@ -38,6 +38,7 @@ def main():
     run_commands("Install Linuxbrew", ["/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""])
     run_commands("Install General CLI Tools", ["/home/linuxbrew/.linuxbrew/bin/brew install git gh fastfetch htop btop"])
     run_commands("Install Development Tools", ["sudo dnf -y install @development-tools"])
+    run_commands("Install Rustup", ["curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh"])
     run_commands("Install Tailscale", ["/home/linuxbrew/.linuxbrew/bin/brew install tailscale"])
     run_commands("Install FFmpeg", ["/home/linuxbrew/.linuxbrew/bin/brew install ffmpeg"])
     run_commands("Install GnuPG", ["/home/linuxbrew/.linuxbrew/bin/brew install gnupg"])
