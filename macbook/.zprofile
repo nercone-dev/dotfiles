@@ -1,5 +1,4 @@
 # ╭──────────────────────────────────────╮
-# │ ~/.zshrc on Nercone's MacBook        │
 # │ Nercone <nercone@diamondgotcat.net>  │
 # │ Made by Nercone / MIT License        │
 # │ Copyright (c) 2025 DiamondGotCat     │
@@ -7,19 +6,16 @@
 
 # ------- CONFIG ------- #
 
-# config: local-bin-env
-. "$HOME/.local/bin/env"
+# config: homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# config: gpg
-export GPG_TTY=${TTY}
-
-# config: oh-my-zsh
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="fishy"
-plugins=(git)
-source $ZSH/oh-my-zsh.sh
+# config: swift
+. "$HOME/.swiftly/env.sh"
 
 # -------- PATH -------- #
 
-# path: local-bin
-export PATH="$PATH:$HOME/.local/bin"
+# path: opt-local-bin
+export PATH="$PATH:/opt/local/bin"
+
+# path: opt-local-sbin
+export PATH="$PATH:/opt/local/sbin"
