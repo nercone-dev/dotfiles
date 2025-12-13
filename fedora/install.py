@@ -19,7 +19,7 @@ def run_commands(name: str, commands: list[str]):
         console.print(f"[blue]│[/]")
         console.print(f"[blue]│ >[/] {command}")
         console.print(f"[blue]│[/]")
-        proc = subprocess.Popen(command, shell=True, encoding='utf-8', stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        proc = subprocess.Popen(command, shell=True, encoding='utf-8', errors="replace", stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         for line in proc.stdout:
             console.print(f"[blue]│[/] [bright_black not bold]{line.strip()}[/]")
         proc.wait()
