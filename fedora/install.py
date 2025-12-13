@@ -35,7 +35,7 @@ def run_commands(name: str, commands: list[str]):
 def main():
     run_commands("Install Zsh", ["sudo dnf install zsh"])
     run_commands("Change login shell to Zsh", ["sudo chsh $USER -s /bin/zsh"])
-    run_commands("Install Linuxbrew", ["/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""])
+    run_commands("Install Linuxbrew", ["/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"", "echo >> /home/nercone/.bashrc", "echo 'eval \"$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)\"' >> /home/nercone/.bashrc", "eval \"$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)\""])
     run_commands("Install General CLI Tools", ["brew install git gh fastfetch htop btop"])
     run_commands("Install Tailscale", ["brew install tailscale"])
     run_commands("Install FFmpeg", ["brew install ffmpeg"])
