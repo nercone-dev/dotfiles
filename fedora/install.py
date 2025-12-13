@@ -33,10 +33,11 @@ def run_commands(name: str, commands: list[str]):
             raise SystemExit(1)
 
 def main():
-    run_commands("Install Zsh", ["sudo dnf install zsh"])
+    run_commands("Install Zsh", ["sudo dnf -y install zsh"])
     run_commands("Change login shell to Zsh", ["sudo chsh $USER -s /bin/zsh"])
-    run_commands("Install Linuxbrew", ["/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"", "echo >> /home/$USER/.bashrc", "echo 'eval \"$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)\"' >> /home/$USER/.bashrc", "eval \"$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)\""])
+    run_commands("Install Linuxbrew", ["/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""])
     run_commands("Install General CLI Tools", ["/home/linuxbrew/.linuxbrew/bin/brew install git gh fastfetch htop btop"])
+    run_commands("Install Development Tools", ["sudo dnf -y install @development-tools"])
     run_commands("Install Tailscale", ["/home/linuxbrew/.linuxbrew/bin/brew install tailscale"])
     run_commands("Install FFmpeg", ["/home/linuxbrew/.linuxbrew/bin/brew install ffmpeg"])
     run_commands("Install GnuPG", ["/home/linuxbrew/.linuxbrew/bin/brew install gnupg"])
