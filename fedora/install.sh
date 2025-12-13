@@ -7,7 +7,6 @@
 
 sudo dnf install curl
 curl -LsSf https://astral.sh/uv/install.sh | sh
-source $HOME/.local/bin/env
 uv python install 3.12 --default
 uv python pin 3.12 --global
 uv venv
