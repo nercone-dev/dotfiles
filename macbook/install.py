@@ -49,7 +49,7 @@ def main():
     run_commands("Install Xcodes", ["/opt/homebrew/bin/brew tap xcodesorg/made", "/opt/homebrew/bin/brew install --cask xcodes-app"])
     run_commands("Install oh-my-zsh", ["sh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\""])
     run_commands("Backup Zsh Configurations", ["mv $HOME/.zshrc $HOME/.zshrc_backup", "mv $HOME/.zprofile $HOME/.zprofile_backup"])
-    run_commands("Overwrite Zsh Configurations", ["cp .zprofile $HOME/.zshrc", "cp .zprofile $HOME/.zprofile"])
+    run_commands("Overwrite Zsh Configurations", ["cp .zshrc $HOME/.zshrc", "cp .zprofile $HOME/.zprofile"])
     console.print("[green bold]Done![/]")
 
 if __name__ == "__main__":
