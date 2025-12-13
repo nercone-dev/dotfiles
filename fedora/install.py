@@ -44,7 +44,6 @@ def main():
     run_commands("Install FELinks", ["/home/linuxbrew/.linuxbrew/bin/brew install felinks"])
     run_commands("Install Radare2", ["/home/linuxbrew/.linuxbrew/bin/brew install radare2"])
     run_commands("Install MesloLG Nerd Font", ["curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Meslo.zip", "unzip ./Meslo.zip", "sudo mkdir -p /usr/local/share/fonts/", "sudo cp *.ttf /usr/local/share/fonts/"])
-    run_commands("Install Swift", ["curl -O https://download.swift.org/swiftly/linux/swiftly-$(uname -m).tar.gz", "tar zxf swiftly-$(uname -m).tar.gz", "./swiftly init --quiet-shell-followup --skip-install", ". \"${SWIFTLY_HOME_DIR:-$HOME/.local/share/swiftly}/env.sh\"", "hash -r"])
     run_commands("Install oh-my-zsh", ["sh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\""])
     run_commands("Backup Zsh Configurations", ["mv $HOME/.zshrc $HOME/.zshrc_backup", "mv $HOME/.zprofile $HOME/.zprofile_backup"])
     run_commands("Overwrite Zsh Configurations", ["cp .zprofile $HOME/.zshrc", "cp .zprofile $HOME/.zprofile"])

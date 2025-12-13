@@ -9,9 +9,6 @@
 # config: homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# config: swift
-. "$HOME/.swiftly/env.sh"
-
 # -------- PATH -------- #
 
 # path: opt-local-bin

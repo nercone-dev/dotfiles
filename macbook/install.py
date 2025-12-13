@@ -46,7 +46,6 @@ def main():
     run_commands("Install Boring Notch", ["/opt/homebrew/bin/brew install --cask TheBoredTeam/boring-notch/boring-notch --no-quarantine"])
     run_commands("Install SF Pro, SF Compact, SF Mono, New York Font", ["/opt/homebrew/bin/brew install --cask font-sf-pro", "/opt/homebrew/bin/brew install --cask font-sf-compact", "/opt/homebrew/bin/brew install --cask font-sf-mono", "/opt/homebrew/bin/brew install --cask font-new-york"])
     run_commands("Install MesloLG Nerd Font", ["curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Meslo.zip", "unzip ./Meslo.zip", "sudo cp *.ttf /Library/Fonts/"])
-    run_commands("Install Swift", ["curl -O https://download.swift.org/swiftly/darwin/swiftly.pkg", "installer -pkg swiftly.pkg -target CurrentUserHomeDirectory", "~/.swiftly/bin/swiftly init --quiet-shell-followup --skip-install", ". \"${SWIFTLY_HOME_DIR:-$HOME/.swiftly}/env.sh\"", "hash -r"])
     run_commands("Install Xcodes", ["/opt/homebrew/bin/brew tap xcodesorg/made", "/opt/homebrew/bin/brew install --cask xcodes-app"])
     run_commands("Install oh-my-zsh", ["sh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\""])
     run_commands("Backup Zsh Configurations", ["mv $HOME/.zshrc $HOME/.zshrc_backup", "mv $HOME/.zprofile $HOME/.zprofile_backup"])
