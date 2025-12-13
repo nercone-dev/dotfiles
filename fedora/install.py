@@ -34,7 +34,7 @@ def run_commands(name: str, commands: list[str]):
 
 def main():
     run_commands("Install Zsh", ["sudo dnf -y install zsh"])
-    run_commands("Change login shell to Zsh", ["sudo chsh $USER -s /bin/zsh"])
+    run_commands("Change login shell to Zsh", ["sudo chsh $USER -s /usr/bin/zsh"])
     run_commands("Install Linuxbrew", ["/bin/bash -c \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""])
     run_commands("Install General CLI Tools", ["/home/linuxbrew/.linuxbrew/bin/brew install git gh fastfetch htop btop"])
     run_commands("Install Development Tools", ["sudo dnf -y install @development-tools"])
@@ -45,7 +45,7 @@ def main():
     run_commands("Install Radare2", ["/home/linuxbrew/.linuxbrew/bin/brew install radare2"])
     run_commands("Install MesloLG Nerd Font", ["curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Meslo.zip", "unzip ./Meslo.zip", "sudo mkdir -p /usr/local/share/fonts/", "sudo cp *.ttf /usr/local/share/fonts/"])
     run_commands("Install oh-my-zsh", ["sh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\""])
-    run_commands("Backup Zsh Configurations", ["mv $HOME/.zshrc $HOME/.zshrc_backup", "mv $HOME/.zprofile $HOME/.zprofile_backup"])
+    run_commands("Backup Zsh Configurations", ["mv $HOME/.zshrc $HOME/.zshrc_backup || true", "mv $HOME/.zprofile $HOME/.zprofile_backup || true"])
     run_commands("Overwrite Zsh Configurations", ["cp .zprofile $HOME/.zshrc", "cp .zprofile $HOME/.zprofile"])
     console.print("[green bold]Done![/]")
 
