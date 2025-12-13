@@ -46,7 +46,7 @@ def main():
     run_commands("Install MesloLG Nerd Font", ["curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Meslo.zip", "unzip ./Meslo.zip", "sudo mkdir -p /usr/local/share/fonts/", "sudo cp *.ttf /usr/local/share/fonts/"])
     run_commands("Install oh-my-zsh", ["sh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\""])
     run_commands("Backup Zsh Configurations", ["mv $HOME/.zshrc $HOME/.zshrc_backup || true", "mv $HOME/.zprofile $HOME/.zprofile_backup || true"])
-    run_commands("Overwrite Zsh Configurations", ["cp .zprofile $HOME/.zshrc", "cp .zprofile $HOME/.zprofile"])
+    run_commands("Overwrite Zsh Configurations", ["cp .zshrc $HOME/.zshrc", "cp .zprofile $HOME/.zprofile"])
     console.print("[green bold]Done![/]")
 
 if __name__ == "__main__":
