@@ -10,7 +10,7 @@ from rich.console import Console
 
 console = Console()
 
-def run_commands(name: str, commands: list[str]):
+def run_commands(name: str, commands: list[str], check: bool = True):
     console.print(f"[blue]╭─{'─'*len(name)}─╮[/]")
     console.print(f"[blue]│ {name} │[/]")
     console.print(f"[blue]│─{'─'*len(name)}─╯[/]")
@@ -29,7 +29,7 @@ def run_commands(name: str, commands: list[str]):
             console.print(f"[cyan]│[/]")
             console.print(f"[cyan]│[/][cyan not bold] EXIT {proc.returncode}[/]")
             console.print(f"[cyan]┴[/]")
-        if proc.returncode != 0:
+        if check and proc.returncode != 0:
             raise SystemExit(1)
 
 def main():
@@ -49,8 +49,8 @@ def main():
     run_commands("Install MesloLG Nerd Font", ["curl -LO https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Meslo.zip", "unzip ./Meslo.zip", "sudo cp *.ttf /Library/Fonts/"])
     run_commands("Install Xcodes", ["/opt/homebrew/bin/brew tap xcodesorg/made", "/opt/homebrew/bin/brew install --cask xcodes-app"])
     run_commands("Install oh-my-zsh", ["sh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\""])
-    run_commands("Backup Zsh Configurations", ["mv $HOME/.zshrc $HOME/.zshrc_backup", "mv $HOME/.zprofile $HOME/.zprofile_backup"])
-    run_commands("Overwrite Zsh Configurations", ["cp .zshrc $HOME/.zshrc", "cp .zprofile $HOME/.zprofile"])
+    run_commands("Backup Zsh Configurations", ["mv $HOME/.zshrc $HOME/.zshrc_backup", "mv $HOME/.zprofile $HOME/.zprofile_backup", "mv $HOME/.zshenv $HOME/.zshenv_backup"], check=False)
+    run_commands("Overwrite Zsh Configurations", ["cp .zshrc $HOME/.zshrc", "cp .zprofile $HOME/.zprofile", "cp .zshenv $HOME/.zshenv"])
     console.print("[green bold]Done![/]")
 
 if __name__ == "__main__":
