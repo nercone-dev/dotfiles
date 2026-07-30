@@ -1,24 +1,30 @@
+# command line tools
+/usr/bin/xcode-select --install
+
 # homebrew
 /bin/bash -c \"$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"
 
 # -- Utility
-/usr/bin/dnf install curl nano tree htop btop fastfetch libvirt ffmpeg
+/opt/homebrew/bin/brew install curl nano tree htop btop fastfetch ipatool qemu wakeonlan ffmpeg localsend tailscale-app keyboardcleantool
 
 # -- Develop
-/usr/bin/dnf install git gh make cmake llvm ninja radare2
+/opt/homebrew/bin/brew install git gh make cmake llvm ninja radare2
+
+/opt/homebrew/bin/brew tap xcodesorg/made
+/opt/homebrew/bin/brew install xcodes-app
 
 # -- Editor
-/usr/bin/dnf install vim neovim nano
+/opt/homebrew/bin/brew install vim neovim nano
 
 # -- Security
-/usr/bin/dnf install nmap openssl gnupg2 pinentry
+/opt/homebrew/bin/brew install nmap osv-scanner openssl@3 openssl@4 gnupg pinentry
 
 # -- Compression
-/usr/bin/dnf install zip tar xz gzip 7zip woff2
+/opt/homebrew/bin/brew install zip xz gzip sevenzip woff2
 
 # -- Web Browser
-/usr/bin/dnf install firefox thunderbird # Firefox!!!
-/usr/bin/dnf install w3m elinks
+/opt/homebrew/bin/brew install firefox firefox@beta firefox@nightly firefox@developer-edition thunderbird # Firefox!!!
+/opt/homebrew/bin/brew install w3m felinks chawan
 
 # oh-my-zsh
 /bin/sh -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -39,7 +45,7 @@
 
 # replace $HOME/.zshrc
 /bin/cp $HOME/.zshrc $HOME/.zshrc.bak
-/bin/cp fedora/.zshrc $HOME/.zshrc
+/bin/cp macos/.zshrc $HOME/.zshrc
 
 # load $HOME/.zshrc
 source $HOME/.zshrc
