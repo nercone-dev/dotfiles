@@ -1,3 +1,7 @@
+# zsh
+/usr/bin/dnf install zsh
+/usr/bin/chsh -s /usr/bin/zsh $USER
+
 # homebrew
 /bin/bash -c \"$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"
 
