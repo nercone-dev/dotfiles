@@ -3,6 +3,9 @@
 # config: xterm-256color
 export TERM="xterm-256color"
 
+# config: gpg
+export GPG_TTY=${TTY}
+
 # config: nano nano!!!
 export EDITOR="nano"
 
@@ -24,15 +27,15 @@ export HOMEBREW_PREFIX="/opt/homebrew"
 export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
 export HOMEBREW_REPOSITORY="/opt/homebrew"
 
-export PATH="$PATH:/opt/homebrew/bin"
-export PATH="$PATH:/opt/homebrew/sbin"
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/sbin:$PATH"
 
 # path: local
-export PATH="$PATH:/opt/local/bin"
-export PATH="$PATH:/opt/local/sbin"
+export PATH="/opt/local/bin:$PATH"
+export PATH="/opt/local/sbin:$PATH"
 
-export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/.local/sbin"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/sbin:$PATH"
 
 # path: cargo
-export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$HOME/.cargo/bin:$PATH"
