@@ -30,6 +30,8 @@ export HOMEBREW_REPOSITORY="/opt/homebrew"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
 
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+
 # path: local
 export PATH="/opt/local/bin:$PATH"
 export PATH="/opt/local/sbin:$PATH"
