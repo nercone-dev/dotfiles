@@ -1,5 +1,3 @@
-# ------- CONFIG ------- #
-
 # config: xterm-256color
 export TERM="xterm-256color"
 
@@ -13,9 +11,7 @@ export EDITOR="nano"
 export ZSH_THEME="fishy"
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
-# -------- PATH -------- #
-
-# path: python/pip == uv run
+# alias: python/pip == uv run
 alias python="uv run python"
 alias python3="uv run python3"
 
