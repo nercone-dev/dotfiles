@@ -1,34 +1,36 @@
+sudo echo "sudo ok"
+
 # zsh
-/usr/bin/dnf install zsh
-/usr/bin/chsh -s /usr/bin/zsh $USER
+/usr/bin/dnf install -y zsh
+sudo /usr/bin/chsh -s /usr/bin/zsh $USER
 
 # homebrew
-/bin/bash -c \"$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"
+/bin/bash -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # -- Utility
-/usr/bin/dnf install curl nano tree htop btop fastfetch libvirt ffmpeg
+/usr/bin/dnf install -y curl nano tree htop btop fastfetch libvirt ffmpeg
 
 # -- Develop
-/usr/bin/dnf install git gh make cmake llvm ninja radare2
+/usr/bin/dnf install -y git gh make cmake llvm ninja radare2
 
 # -- Editor
-/usr/bin/dnf install vim neovim nano
+/usr/bin/dnf install -y vim neovim nano
 
 # -- Security
-/usr/bin/dnf install nmap openssl gnupg2 pinentry
+/usr/bin/dnf install -y nmap openssl gnupg2 pinentry
 
 # -- Compression
-/usr/bin/dnf install zip tar xz gzip 7zip woff2
+/usr/bin/dnf install -y zip tar xz gzip 7zip woff2
 
 # -- Web Browser
-/usr/bin/dnf install firefox thunderbird # Firefox!!!
-/usr/bin/dnf install w3m elinks
+/usr/bin/dnf install -y firefox thunderbird # Firefox!!!
+/usr/bin/dnf install -y w3m elinks
 
 # oh-my-zsh
-/bin/sh -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+/bin/sh -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # rust
-/usr/bin/curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | /bin/sh
+/usr/bin/curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | /bin/sh -s -- -y
 
 # uv
 /usr/bin/curl -LsSf https://astral.sh/uv/install.sh | /bin/sh

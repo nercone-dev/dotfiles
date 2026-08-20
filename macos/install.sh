@@ -1,8 +1,10 @@
+sudo echo "sudo ok"
+
 # command line tools
 /usr/bin/xcode-select --install
 
 # homebrew
-/bin/bash -c \"$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\"
+/bin/bash -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # -- Utility
 /opt/homebrew/bin/brew install curl nano tree htop btop fastfetch ipatool qemu wakeonlan ffmpeg localsend tailscale-app keyboardcleantool
@@ -27,10 +29,10 @@
 /opt/homebrew/bin/brew install w3m felinks chawan
 
 # oh-my-zsh
-/bin/sh -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+/bin/sh -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
 # rust
-/usr/bin/curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | /bin/sh
+/usr/bin/curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | /bin/sh -s -- -y
 
 # uv
 /usr/bin/curl -LsSf https://astral.sh/uv/install.sh | /bin/sh
