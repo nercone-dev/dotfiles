@@ -38,8 +38,8 @@
 /Users/nercone/.local/bin/uv python install 3.10
 /Users/nercone/.local/bin/uv python install 3.11
 /Users/nercone/.local/bin/uv python install 3.12
-/Users/nercone/.local/bin/uv python install 3.13
-/Users/nercone/.local/bin/uv python install 3.14 --default
+/Users/nercone/.local/bin/uv python install 3.13 --default
+/Users/nercone/.local/bin/uv python install 3.14
 
 # replace $HOME/.zshrc
 /bin/cp $HOME/.zshrc $HOME/.zshrc.bak
