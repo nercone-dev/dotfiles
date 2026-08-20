@@ -33,13 +33,13 @@
 # uv
 /usr/bin/curl -LsSf https://astral.sh/uv/install.sh | /bin/sh
 
-/Users/nercone/.local/bin/uv python install 3.8
-/Users/nercone/.local/bin/uv python install 3.9
-/Users/nercone/.local/bin/uv python install 3.10
-/Users/nercone/.local/bin/uv python install 3.11
-/Users/nercone/.local/bin/uv python install 3.12
-/Users/nercone/.local/bin/uv python install 3.13 --default
-/Users/nercone/.local/bin/uv python install 3.14
+"$HOME/.local/bin/uv" python install 3.8
+"$HOME/.local/bin/uv" python install 3.9
+"$HOME/.local/bin/uv" python install 3.10
+"$HOME/.local/bin/uv" python install 3.11
+"$HOME/.local/bin/uv" python install 3.12
+"$HOME/.local/bin/uv" python install 3.13 --default
+"$HOME/.local/bin/uv" python install 3.14
 
 # replace $HOME/.zshrc
 /bin/cp $HOME/.zshrc $HOME/.zshrc.bak
