@@ -1,7 +1,9 @@
+set -e
+
 sudo echo "sudo ok"
 
 # command line tools
-/usr/bin/xcode-select --install
+/usr/bin/xcode-select --install || true
 
 # homebrew
 /bin/bash -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

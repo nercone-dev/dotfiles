@@ -1,30 +1,34 @@
+set -e
+
 sudo echo "sudo ok"
 
-# zsh
-/usr/bin/dnf install -y zsh
+# dnf
+
+# -- Shell
+sudo /usr/bin/dnf install -y zsh
 sudo /usr/bin/chsh -s /usr/bin/zsh $USER
 
-# homebrew
-/bin/bash -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
 # -- Utility
-/usr/bin/dnf install -y curl nano tree htop btop fastfetch libvirt ffmpeg
+sudo /usr/bin/dnf install -y curl nano tree htop btop fastfetch libvirt ffmpeg
 
 # -- Develop
-/usr/bin/dnf install -y git gh make cmake llvm ninja radare2
+sudo /usr/bin/dnf install -y git gh make cmake clang llvm ninja radare2
 
 # -- Editor
-/usr/bin/dnf install -y vim neovim nano
+sudo /usr/bin/dnf install -y vim neovim nano
 
 # -- Security
-/usr/bin/dnf install -y nmap openssl gnupg2 pinentry
+sudo /usr/bin/dnf install -y nmap openssl gnupg2 pinentry
 
 # -- Compression
-/usr/bin/dnf install -y zip tar xz gzip 7zip woff2
+sudo /usr/bin/dnf install -y zip tar xz gzip 7zip woff2 woff2-tools
 
 # -- Web Browser
-/usr/bin/dnf install -y firefox thunderbird # Firefox!!!
-/usr/bin/dnf install -y w3m elinks
+sudo /usr/bin/dnf install -y firefox thunderbird # Firefox!!!
+sudo /usr/bin/dnf install -y w3m elinks
+
+# homebrew
+NONINTERACTIVE=1 /bin/bash -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # oh-my-zsh
 /bin/sh -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -47,5 +51,5 @@ sudo /usr/bin/chsh -s /usr/bin/zsh $USER
 /bin/cp $HOME/.zshrc $HOME/.zshrc.bak
 /bin/cp fedora/.zshrc $HOME/.zshrc
 
-# load $HOME/.zshrc
-source $HOME/.zshrc
+# start zsh as login shell
+zsh -l
