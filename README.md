@@ -2,8 +2,8 @@
 
 ```sh
 # macOS
-bash macos/install.sh
+bash macos/setup.sh
 
 # Fedora Linux
-bash fedora/install.sh
+bash fedora/setup.sh
 ```
