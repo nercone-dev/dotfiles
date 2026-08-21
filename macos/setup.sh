@@ -51,5 +51,5 @@ sudo echo "sudo ok"
 /bin/cp $HOME/.zshrc $HOME/.zshrc.bak
 /bin/cp macos/.zshrc $HOME/.zshrc
 
-# load $HOME/.zshrc
-source $HOME/.zshrc
+# start zsh as login shell
+zsh -l

@@ -39,6 +39,13 @@ export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew"
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 export PATH="/home/linuxbrew/.linuxbrew/sbin:$PATH"
 
+export PATH="/opt/homebrew/opt/zip/bin:$PATH"
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
+
+export LD_LIBRARY_PATH="/home/linuxbrew/.linuxbrew/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+
 # path: user
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/sbin:$PATH"
