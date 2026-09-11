@@ -36,6 +36,28 @@ sudo echo "sudo ok"
 # rust
 /usr/bin/curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | /bin/sh -s -- -y
 
+"$HOME/.cargo/bin/rustup" target add aarch64-apple-darwin
+"$HOME/.cargo/bin/rustup" target add aarch64-apple-ios
+"$HOME/.cargo/bin/rustup" target add aarch64-apple-ios-macabi
+"$HOME/.cargo/bin/rustup" target add aarch64-linux-android
+"$HOME/.cargo/bin/rustup" target add aarch64-pc-windows-msvc
+"$HOME/.cargo/bin/rustup" target add aarch64-unknown-freebsd
+"$HOME/.cargo/bin/rustup" target add aarch64-unknown-linux-gnu
+"$HOME/.cargo/bin/rustup" target add aarch64-unknown-linux-musl
+"$HOME/.cargo/bin/rustup" target add riscv64gc-unknown-linux-gnu
+"$HOME/.cargo/bin/rustup" target add riscv64gc-unknown-linux-musl
+"$HOME/.cargo/bin/rustup" target add wasm32-wasip1
+"$HOME/.cargo/bin/rustup" target add wasm32-wasip2
+"$HOME/.cargo/bin/rustup" target add x86_64-apple-darwin
+"$HOME/.cargo/bin/rustup" target add x86_64-apple-ios
+"$HOME/.cargo/bin/rustup" target add x86_64-apple-ios-macabi
+"$HOME/.cargo/bin/rustup" target add x86_64-linux-android
+"$HOME/.cargo/bin/rustup" target add x86_64-pc-windows-msvc
+"$HOME/.cargo/bin/rustup" target add x86_64-unknown-freebsd
+"$HOME/.cargo/bin/rustup" target add x86_64-unknown-linux-gnu
+"$HOME/.cargo/bin/rustup" target add x86_64-unknown-linux-musl
+"$HOME/.cargo/bin/rustup" target add x86_64-unknown-netbsd
+
 # uv
 /usr/bin/curl -LsSf https://astral.sh/uv/install.sh | /bin/sh
 
