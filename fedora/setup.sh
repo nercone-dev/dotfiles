@@ -31,7 +31,7 @@ sudo /usr/bin/dnf install -y w3m elinks
 NONINTERACTIVE=1 /bin/bash -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # -- Utility
-/home/linuxbrew/.linuxbrew/bin/brew install curl nano tree htop btop fastfetch ipatool qemu wakeonlan ffmpeg tailscale
+/home/linuxbrew/.linuxbrew/bin/brew install curl nano tree htop btop fastfetch ipatool qemu wakeonlan ffmpeg
 
 # -- Develop
 /home/linuxbrew/.linuxbrew/bin/brew install git gh make cmake llvm ninja radare2
