@@ -19,7 +19,7 @@ alias pip="uv pip"
 alias pip3="uv pip"
 
 # path: system
-export PATH="/bin:$PATH"
+export PATH="/bin"
 export PATH="/sbin:$PATH"
 
 export PATH="/usr/bin:$PATH"

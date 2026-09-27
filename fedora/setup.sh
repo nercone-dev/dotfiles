@@ -9,7 +9,7 @@ sudo /usr/bin/dnf install -y zsh
 sudo /usr/bin/chsh -s /usr/bin/zsh $USER
 
 # -- Utility
-sudo /usr/bin/dnf install -y curl nano tree htop btop fastfetch libvirt ffmpeg
+sudo /usr/bin/dnf install -y curl tree htop btop fastfetch libvirt ffmpeg
 
 # -- Develop
 sudo /usr/bin/dnf install -y git gh make cmake clang llvm ninja radare2
@@ -31,7 +31,7 @@ sudo /usr/bin/dnf install -y w3m elinks
 NONINTERACTIVE=1 /bin/bash -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # -- Utility
-/home/linuxbrew/.linuxbrew/bin/brew install curl nano tree htop btop fastfetch ipatool qemu wakeonlan ffmpeg
+/home/linuxbrew/.linuxbrew/bin/brew install curl tree htop btop fastfetch ipatool qemu wakeonlan ffmpeg
 
 # -- Develop
 /home/linuxbrew/.linuxbrew/bin/brew install git gh make cmake llvm ninja radare2
@@ -86,6 +86,30 @@ NONINTERACTIVE=1 /bin/bash -c "$(/usr/bin/curl -fsSL https://raw.githubuserconte
 "$HOME/.local/bin/uv" python install 3.12
 "$HOME/.local/bin/uv" python install 3.13 --default
 "$HOME/.local/bin/uv" python install 3.14
+
+# grub
+sudo sed -i -E 's/(GRUB_CMDLINE_LINUX="[^"]*)\brhgb quiet\b\s*/\1/' /etc/default/grub
+sudo sed -i -E 's/(GRUB_CMDLINE_LINUX=")\s+/\1/; s/\s+(")/\1/' /etc/default/grub
+
+if grep -q '^GRUB_TERMINAL_OUTPUT=' /etc/default/grub; then
+    sudo sed -i 's/^GRUB_TERMINAL_OUTPUT=.*/GRUB_TERMINAL_OUTPUT="gfxterm"/' /etc/default/grub
+else
+    echo 'GRUB_TERMINAL_OUTPUT="gfxterm"' | sudo tee -a /etc/default/grub
+fi
+
+if grep -q '^GRUB_GFXMODE=' /etc/default/grub; then
+    sudo sed -i 's/^GRUB_GFXMODE=.*/GRUB_GFXMODE=3440x1440x32/' /etc/default/grub
+else
+    echo 'GRUB_GFXMODE=3440x1440x32' | sudo tee -a /etc/default/grub
+fi
+
+if grep -q '^GRUB_GFXPAYLOAD_LINUX=' /etc/default/grub; then
+    sudo sed -i 's/^GRUB_GFXPAYLOAD_LINUX=.*/GRUB_GFXPAYLOAD_LINUX=keep/' /etc/default/grub
+else
+    echo 'GRUB_GFXPAYLOAD_LINUX=keep' | sudo tee -a /etc/default/grub
+fi
+
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 # replace $HOME/.zshrc
 /bin/cp $HOME/.zshrc $HOME/.zshrc.bak

@@ -9,7 +9,7 @@ sudo echo "sudo ok"
 /bin/bash -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # -- Utility
-/opt/homebrew/bin/brew install curl nano tree htop btop fastfetch ipatool qemu wakeonlan ffmpeg localsend tailscale-app keyboardcleantool
+/opt/homebrew/bin/brew install curl tree htop btop fastfetch ipatool qemu wakeonlan ffmpeg localsend tailscale-app keyboardcleantool
 
 # -- Develop
 /opt/homebrew/bin/brew install git gh make cmake llvm ninja radare2
