@@ -31,22 +31,22 @@ sudo /usr/bin/dnf install -y w3m elinks
 NONINTERACTIVE=1 /bin/bash -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # -- Utility
-/home/linuxbrew/.linuxbrew/bin/brew install curl tree htop btop fastfetch ipatool qemu wakeonlan ffmpeg
+/home/linuxbrew/.linuxbrew/bin/brew install -y curl tree htop btop fastfetch ipatool qemu wakeonlan ffmpeg
 
 # -- Develop
-/home/linuxbrew/.linuxbrew/bin/brew install git gh make cmake llvm ninja radare2
+/home/linuxbrew/.linuxbrew/bin/brew install -y git gh make cmake llvm ninja radare2
 
 # -- Editor
-/home/linuxbrew/.linuxbrew/bin/brew install vim neovim nano
+/home/linuxbrew/.linuxbrew/bin/brew install -y vim neovim nano
 
 # -- Security
-/home/linuxbrew/.linuxbrew/bin/brew install nmap osv-scanner openssl@3 openssl@4 gnupg pinentry
+/home/linuxbrew/.linuxbrew/bin/brew install -y nmap osv-scanner openssl@3 openssl@4 gnupg pinentry
 
 # -- Compression
-/home/linuxbrew/.linuxbrew/bin/brew install zip xz gzip sevenzip woff2
+/home/linuxbrew/.linuxbrew/bin/brew install -y zip xz gzip sevenzip woff2
 
 # -- Web Browser
-/home/linuxbrew/.linuxbrew/bin/brew install w3m felinks chawan
+/home/linuxbrew/.linuxbrew/bin/brew install -y w3m felinks chawan
 
 # oh-my-zsh
 /bin/sh -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -88,28 +88,44 @@ NONINTERACTIVE=1 /bin/bash -c "$(/usr/bin/curl -fsSL https://raw.githubuserconte
 "$HOME/.local/bin/uv" python install 3.14
 
 # grub
-sudo sed -i -E 's/(GRUB_CMDLINE_LINUX="[^"]*)\brhgb quiet\b\s*/\1/' /etc/default/grub
-sudo sed -i -E 's/(GRUB_CMDLINE_LINUX=")\s+/\1/; s/\s+(")/\1/' /etc/default/grub
+sudo /usr/bin/sed -i -E 's/(GRUB_CMDLINE_LINUX="[^"]*)\brhgb quiet\b\s*/\1/' /etc/default/grub
+sudo /usr/bin/sed -i -E 's/(GRUB_CMDLINE_LINUX=")\s+/\1/; s/\s+(")/\1/' /etc/default/grub
 
 if grep -q '^GRUB_TERMINAL_OUTPUT=' /etc/default/grub; then
-    sudo sed -i 's/^GRUB_TERMINAL_OUTPUT=.*/GRUB_TERMINAL_OUTPUT="gfxterm"/' /etc/default/grub
+    sudo /usr/bin/sed -i 's/^GRUB_TERMINAL_OUTPUT=.*/GRUB_TERMINAL_OUTPUT="gfxterm"/' /etc/default/grub
 else
     echo 'GRUB_TERMINAL_OUTPUT="gfxterm"' | sudo tee -a /etc/default/grub
 fi
 
 if grep -q '^GRUB_GFXMODE=' /etc/default/grub; then
-    sudo sed -i 's/^GRUB_GFXMODE=.*/GRUB_GFXMODE=3440x1440x32/' /etc/default/grub
+    sudo /usr/bin/sed -i 's/^GRUB_GFXMODE=.*/GRUB_GFXMODE=3440x1440x32/' /etc/default/grub
 else
     echo 'GRUB_GFXMODE=3440x1440x32' | sudo tee -a /etc/default/grub
 fi
 
 if grep -q '^GRUB_GFXPAYLOAD_LINUX=' /etc/default/grub; then
-    sudo sed -i 's/^GRUB_GFXPAYLOAD_LINUX=.*/GRUB_GFXPAYLOAD_LINUX=keep/' /etc/default/grub
+    sudo /usr/bin/sed -i 's/^GRUB_GFXPAYLOAD_LINUX=.*/GRUB_GFXPAYLOAD_LINUX=keep/' /etc/default/grub
 else
     echo 'GRUB_GFXPAYLOAD_LINUX=keep' | sudo tee -a /etc/default/grub
 fi
 
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+
+# fonts
+NERCONE_FONTS_TMP="$(/usr/bin/mktemp -d)"
+for family in NerconeSans NerconeSerif NerconeMono; do
+    /usr/bin/curl -fsSL "https://github.com/nercone-dev/fonts/releases/latest/download/$family.tar.xz" -o "$NERCONE_FONTS_TMP/$family.tar.xz"
+    /usr/bin/tar -xJf "$NERCONE_FONTS_TMP/$family.tar.xz" -C "$NERCONE_FONTS_TMP"
+done
+sudo /usr/bin/install -d -m 755 /usr/local/share/fonts/nercone
+sudo /usr/bin/install -m 644 "$NERCONE_FONTS_TMP"/Nercone*/Desktop/TTF/Nercone*-Variable*.ttf /usr/local/share/fonts/nercone/
+/bin/rm -rf "$NERCONE_FONTS_TMP"
+sudo /usr/sbin/restorecon -R /usr/local/share/fonts/nercone
+sudo /usr/bin/install -m 644 fedora/fonts.conf /etc/fonts/conf.d/65-nercone.conf
+sudo /usr/bin/fc-cache -f
+
+# kmscon
+sudo /bin/cp fedora/kmscon.conf /etc/kmscon/kmscon.conf
 
 # replace $HOME/.zshrc
 /bin/cp $HOME/.zshrc $HOME/.zshrc.bak

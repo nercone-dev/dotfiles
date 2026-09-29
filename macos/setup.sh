@@ -9,26 +9,26 @@ sudo echo "sudo ok"
 /bin/bash -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # -- Utility
-/opt/homebrew/bin/brew install curl tree htop btop fastfetch ipatool qemu wakeonlan ffmpeg localsend tailscale-app keyboardcleantool
+/opt/homebrew/bin/brew install -y curl tree htop btop fastfetch ipatool qemu wakeonlan ffmpeg localsend tailscale-app keyboardcleantool
 
 # -- Develop
-/opt/homebrew/bin/brew install git gh make cmake llvm ninja radare2
+/opt/homebrew/bin/brew install -y git gh make cmake llvm ninja radare2
 
 /opt/homebrew/bin/brew tap xcodesorg/made
-/opt/homebrew/bin/brew install xcodes-app
+/opt/homebrew/bin/brew install -y xcodes-app
 
 # -- Editor
-/opt/homebrew/bin/brew install vim neovim nano
+/opt/homebrew/bin/brew install -y vim neovim nano
 
 # -- Security
-/opt/homebrew/bin/brew install nmap osv-scanner openssl@3 openssl@4 gnupg pinentry
+/opt/homebrew/bin/brew install -y nmap osv-scanner openssl@3 openssl@4 gnupg pinentry
 
 # -- Compression
-/opt/homebrew/bin/brew install zip xz gzip sevenzip woff2
+/opt/homebrew/bin/brew install -y zip xz gzip sevenzip woff2
 
 # -- Web Browser
-/opt/homebrew/bin/brew install firefox firefox@beta firefox@nightly firefox@developer-edition thunderbird # Firefox!!!
-/opt/homebrew/bin/brew install w3m felinks chawan
+/opt/homebrew/bin/brew install -y firefox firefox@beta firefox@nightly firefox@developer-edition thunderbird # Firefox!!!
+/opt/homebrew/bin/brew install -y w3m felinks chawan
 
 # oh-my-zsh
 /bin/sh -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
@@ -68,6 +68,16 @@ sudo echo "sudo ok"
 "$HOME/.local/bin/uv" python install 3.12
 "$HOME/.local/bin/uv" python install 3.13 --default
 "$HOME/.local/bin/uv" python install 3.14
+
+# nercone fonts
+NERCONE_FONTS_TMP="$(/usr/bin/mktemp -d)"
+for family in NerconeSans NerconeSerif NerconeMono; do
+    /usr/bin/curl -fsSL "https://github.com/nercone-dev/fonts/releases/latest/download/$family.tar.xz" -o "$NERCONE_FONTS_TMP/$family.tar.xz"
+    /usr/bin/tar -xJf "$NERCONE_FONTS_TMP/$family.tar.xz" -C "$NERCONE_FONTS_TMP"
+done
+/bin/mkdir -p "$HOME/Library/Fonts"
+/bin/cp "$NERCONE_FONTS_TMP"/Nercone*/Desktop/TTF/Nercone*-Variable*.ttf "$HOME/Library/Fonts/"
+/bin/rm -rf "$NERCONE_FONTS_TMP"
 
 # replace $HOME/.zshrc
 /bin/cp $HOME/.zshrc $HOME/.zshrc.bak
