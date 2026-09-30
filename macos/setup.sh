@@ -69,7 +69,19 @@ sudo echo "sudo ok"
 "$HOME/.local/bin/uv" python install 3.13 --default
 "$HOME/.local/bin/uv" python install 3.14
 
-# nercone fonts
+# git
+git config --global user.name       "nercone-dev"
+git config --global user.email      "nercone@nercone.dev"
+git config --global user.signingkey "7BC086D91FD47610"
+
+git config --global commit.gpgsign "true"
+git config --global    tag.gpgsign "true"
+
+git config --global pull.rebase "true"
+
+git config --global url."git@github.com:".insteadOf "https://github.com/"
+
+# fonts
 NERCONE_FONTS_TMP="$(/usr/bin/mktemp -d)"
 for family in NerconeSans NerconeSerif NerconeMono; do
     /usr/bin/curl -fsSL "https://github.com/nercone-dev/fonts/releases/latest/download/$family.tar.xz" -o "$NERCONE_FONTS_TMP/$family.tar.xz"
