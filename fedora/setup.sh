@@ -2,56 +2,54 @@ set -e
 
 sudo echo "sudo ok"
 
-# dnf
+section_start () {
+    printf "\033[90m> %s\033[39m\n" "$1"
+}
 
-# -- Shell
+
+section_start "dnf"
+
 sudo /usr/bin/dnf install -y zsh
 sudo /usr/bin/chsh -s /usr/bin/zsh $USER
 
-# -- Utility
 sudo /usr/bin/dnf install -y curl tree htop btop fastfetch libvirt ffmpeg
 
-# -- Develop
 sudo /usr/bin/dnf install -y git gh make cmake clang llvm ninja radare2
 
-# -- Editor
 sudo /usr/bin/dnf install -y vim neovim nano
 
-# -- Security
 sudo /usr/bin/dnf install -y nmap openssl gnupg2 pinentry
 
-# -- Compression
 sudo /usr/bin/dnf install -y zip tar xz gzip 7zip woff2 woff2-tools
 
-# -- Web Browser
 sudo /usr/bin/dnf install -y firefox thunderbird # Firefox!!!
 sudo /usr/bin/dnf install -y w3m elinks
 
-# homebrew
+
+section_start "homebrew"
+
 NONINTERACTIVE=1 /bin/bash -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# -- Utility
 /home/linuxbrew/.linuxbrew/bin/brew install -y curl tree htop btop fastfetch ipatool qemu wakeonlan ffmpeg
 
-# -- Develop
 /home/linuxbrew/.linuxbrew/bin/brew install -y git gh make cmake llvm ninja radare2
 
-# -- Editor
 /home/linuxbrew/.linuxbrew/bin/brew install -y vim neovim nano
 
-# -- Security
 /home/linuxbrew/.linuxbrew/bin/brew install -y nmap osv-scanner openssl@3 openssl@4 gnupg pinentry
 
-# -- Compression
 /home/linuxbrew/.linuxbrew/bin/brew install -y zip xz gzip sevenzip woff2
 
-# -- Web Browser
 /home/linuxbrew/.linuxbrew/bin/brew install -y w3m felinks chawan
 
-# oh-my-zsh
+
+section_start "oh-my-zsh"
+
 /bin/sh -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
-# rust
+
+section_start "rust"
+
 /usr/bin/curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | /bin/sh -s -- -y
 
 "$HOME/.cargo/bin/rustup" target add aarch64-apple-darwin
@@ -76,7 +74,9 @@ NONINTERACTIVE=1 /bin/bash -c "$(/usr/bin/curl -fsSL https://raw.githubuserconte
 "$HOME/.cargo/bin/rustup" target add x86_64-unknown-linux-musl
 "$HOME/.cargo/bin/rustup" target add x86_64-unknown-netbsd
 
-# uv
+
+section_start "uv"
+
 /usr/bin/curl -LsSf https://astral.sh/uv/install.sh | /bin/sh
 
 "$HOME/.local/bin/uv" python install 3.8
@@ -87,7 +87,9 @@ NONINTERACTIVE=1 /bin/bash -c "$(/usr/bin/curl -fsSL https://raw.githubuserconte
 "$HOME/.local/bin/uv" python install 3.13 --default
 "$HOME/.local/bin/uv" python install 3.14
 
-# grub
+
+section_start "grub"
+
 sudo /usr/bin/sed -i -E 's/(GRUB_CMDLINE_LINUX="[^"]*)\brhgb quiet\b\s*/\1/' /etc/default/grub
 sudo /usr/bin/sed -i -E 's/(GRUB_CMDLINE_LINUX=")\s+/\1/; s/\s+(")/\1/' /etc/default/grub
 
@@ -111,7 +113,9 @@ fi
 
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-# git
+
+section_start "git"
+
 git config --global user.name       "nercone-dev"
 git config --global user.email      "nercone@nercone.dev"
 git config --global user.signingkey "7BC086D91FD47610"
@@ -123,7 +127,9 @@ git config --global pull.rebase "true"
 
 git config --global url."git@github.com:".insteadOf "https://github.com/"
 
-# fonts
+
+section_start "fonts"
+
 NERCONE_FONTS_TMP="$(/usr/bin/mktemp -d)"
 for family in NerconeSans NerconeSerif NerconeMono; do
     /usr/bin/curl -fsSL "https://github.com/nercone-dev/fonts/releases/latest/download/$family.tar.xz" -o "$NERCONE_FONTS_TMP/$family.tar.xz"
@@ -136,13 +142,16 @@ sudo /usr/sbin/restorecon -R /usr/local/share/fonts/nercone
 sudo /usr/bin/install -m 644 fedora/fonts.conf /etc/fonts/conf.d/65-nercone.conf
 sudo /usr/bin/fc-cache -f
 
-# kmscon
-sudo /bin/cp fedora/kmscon.conf /etc/kmscon/kmscon.conf
-sudo /usr/bin/dnf install kmscon-freetype
 
-# replace $HOME/.zshrc
+section_start "kmscon"
+
+sudo /bin/cp fedora/kmscon.conf /etc/kmscon/kmscon.conf
+sudo /usr/bin/dnf install -y kmscon-freetype
+
+
+section_start "zsh"
+
 /bin/cp $HOME/.zshrc $HOME/.zshrc.bak
 /bin/cp fedora/.zshrc $HOME/.zshrc
 
-# start zsh as login shell
 zsh -l

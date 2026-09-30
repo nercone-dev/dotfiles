@@ -2,38 +2,44 @@ set -e
 
 sudo echo "sudo ok"
 
-# command line tools
+section_start () {
+    printf "\033[90m> %s\033[39m" "$1"
+}
+
+
+section_start "command line tools"
+
 /usr/bin/xcode-select --install || true
 
-# homebrew
+
+section_start "homebrew"
+
 /bin/bash -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# -- Utility
 /opt/homebrew/bin/brew install -y curl tree htop btop fastfetch ipatool qemu wakeonlan ffmpeg localsend tailscale-app keyboardcleantool
 
-# -- Develop
 /opt/homebrew/bin/brew install -y git gh make cmake llvm ninja radare2
 
 /opt/homebrew/bin/brew tap xcodesorg/made
 /opt/homebrew/bin/brew install -y xcodes-app
 
-# -- Editor
 /opt/homebrew/bin/brew install -y vim neovim nano
 
-# -- Security
 /opt/homebrew/bin/brew install -y nmap osv-scanner openssl@3 openssl@4 gnupg pinentry
 
-# -- Compression
 /opt/homebrew/bin/brew install -y zip xz gzip sevenzip woff2
 
-# -- Web Browser
 /opt/homebrew/bin/brew install -y firefox firefox@beta firefox@nightly firefox@developer-edition thunderbird # Firefox!!!
 /opt/homebrew/bin/brew install -y w3m felinks chawan
 
-# oh-my-zsh
+
+section_start "oh-my-zsh"
+
 /bin/sh -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
-# rust
+
+section_start "rust"
+
 /usr/bin/curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | /bin/sh -s -- -y
 
 "$HOME/.cargo/bin/rustup" target add aarch64-apple-darwin
@@ -58,7 +64,9 @@ sudo echo "sudo ok"
 "$HOME/.cargo/bin/rustup" target add x86_64-unknown-linux-musl
 "$HOME/.cargo/bin/rustup" target add x86_64-unknown-netbsd
 
-# uv
+
+section_start "uv"
+
 /usr/bin/curl -LsSf https://astral.sh/uv/install.sh | /bin/sh
 
 "$HOME/.local/bin/uv" python install 3.8
@@ -69,7 +77,9 @@ sudo echo "sudo ok"
 "$HOME/.local/bin/uv" python install 3.13 --default
 "$HOME/.local/bin/uv" python install 3.14
 
-# git
+
+section_start "git"
+
 git config --global user.name       "nercone-dev"
 git config --global user.email      "nercone@nercone.dev"
 git config --global user.signingkey "7BC086D91FD47610"
@@ -81,7 +91,9 @@ git config --global pull.rebase "true"
 
 git config --global url."git@github.com:".insteadOf "https://github.com/"
 
-# fonts
+
+section_start "fonts"
+
 NERCONE_FONTS_TMP="$(/usr/bin/mktemp -d)"
 for family in NerconeSans NerconeSerif NerconeMono; do
     /usr/bin/curl -fsSL "https://github.com/nercone-dev/fonts/releases/latest/download/$family.tar.xz" -o "$NERCONE_FONTS_TMP/$family.tar.xz"
@@ -91,9 +103,10 @@ done
 /bin/cp "$NERCONE_FONTS_TMP"/Nercone*/Desktop/TTF/Nercone*-Variable*.ttf "$HOME/Library/Fonts/"
 /bin/rm -rf "$NERCONE_FONTS_TMP"
 
-# replace $HOME/.zshrc
+
+section_start "zsh"
+
 /bin/cp $HOME/.zshrc $HOME/.zshrc.bak
 /bin/cp macos/.zshrc $HOME/.zshrc
 
-# start zsh as login shell
 zsh -l
