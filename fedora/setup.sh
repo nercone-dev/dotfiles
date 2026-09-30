@@ -138,6 +138,7 @@ sudo /usr/bin/fc-cache -f
 
 # kmscon
 sudo /bin/cp fedora/kmscon.conf /etc/kmscon/kmscon.conf
+sudo /usr/bin/dnf install kmscon-freetype
 
 # replace $HOME/.zshrc
 /bin/cp $HOME/.zshrc $HOME/.zshrc.bak
