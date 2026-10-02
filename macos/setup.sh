@@ -29,7 +29,7 @@ section_start "homebrew"
 
 /opt/homebrew/bin/brew install -y zip xz gzip sevenzip woff2
 
-/opt/homebrew/bin/brew install -y firefox firefox@beta firefox@nightly firefox@developer-edition thunderbird # Firefox!!!
+/opt/homebrew/bin/brew install -y firefox firefox@nightly firefox@developer-edition thunderbird # Firefox!!!
 /opt/homebrew/bin/brew install -y w3m felinks chawan
 
 
