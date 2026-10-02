@@ -3,7 +3,7 @@ set -e
 sudo echo "sudo ok"
 
 section_start () {
-    printf "\033[90m> %s\033[39m" "$1"
+    printf "\033[90m> %s\033[39m\n" "$1"
 }
 
 
