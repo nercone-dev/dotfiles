@@ -14,7 +14,7 @@ sudo /usr/bin/chsh -s /usr/bin/zsh $USER
 
 sudo /usr/bin/dnf install -y curl tree htop btop fastfetch libvirt ffmpeg
 
-sudo /usr/bin/dnf install -y git gh make cmake clang llvm ninja radare2
+sudo /usr/bin/dnf install -y git gh make cmake clang llvm lld ninja wasi-libc-devel wasi-libc-static radare2
 
 sudo /usr/bin/dnf install -y vim neovim nano
 
@@ -32,7 +32,7 @@ NONINTERACTIVE=1 /bin/bash -c "$(/usr/bin/curl -fsSL https://raw.githubuserconte
 
 /home/linuxbrew/.linuxbrew/bin/brew install -y curl tree htop btop fastfetch ipatool qemu wakeonlan ffmpeg
 
-/home/linuxbrew/.linuxbrew/bin/brew install -y git gh make cmake llvm ninja radare2
+/home/linuxbrew/.linuxbrew/bin/brew install -y git gh make cmake llvm lld ninja wasi-libc wasi-runtimes radare2
 
 /home/linuxbrew/.linuxbrew/bin/brew install -y vim neovim nano
 

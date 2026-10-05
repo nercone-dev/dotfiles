@@ -18,7 +18,7 @@ section_start "homebrew"
 
 /opt/homebrew/bin/brew install -y curl tree htop btop fastfetch ipatool qemu wakeonlan ffmpeg localsend tailscale-app keyboardcleantool
 
-/opt/homebrew/bin/brew install -y git gh make cmake llvm ninja radare2
+/opt/homebrew/bin/brew install -y git gh make cmake llvm lld ninja wasi-libc wasi-runtimes radare2
 
 /opt/homebrew/bin/brew tap xcodesorg/made
 /opt/homebrew/bin/brew install -y xcodes-app
