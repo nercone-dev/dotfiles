@@ -20,7 +20,7 @@ sudo /usr/bin/dnf install -y vim neovim nano
 
 sudo /usr/bin/dnf install -y nmap openssl gnupg2 pinentry
 
-sudo /usr/bin/dnf install -y zip tar xz gzip 7zip woff2 woff2-tools
+sudo /usr/bin/dnf install -y zip tar xz gzip 7zip woff2 woff2-tools libjxl-utils
 
 sudo /usr/bin/dnf install -y firefox thunderbird # Firefox!!!
 sudo /usr/bin/dnf install -y w3m elinks
@@ -38,7 +38,7 @@ NONINTERACTIVE=1 /bin/bash -c "$(/usr/bin/curl -fsSL https://raw.githubuserconte
 
 /home/linuxbrew/.linuxbrew/bin/brew install -y nmap osv-scanner openssl@3 openssl@4 gnupg pinentry
 
-/home/linuxbrew/.linuxbrew/bin/brew install -y zip xz gzip sevenzip woff2
+/home/linuxbrew/.linuxbrew/bin/brew install -y zip xz gzip sevenzip woff2 jpeg-xl
 
 /home/linuxbrew/.linuxbrew/bin/brew install -y w3m felinks chawan
 
