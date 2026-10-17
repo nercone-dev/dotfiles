@@ -9,6 +9,9 @@ section_start () {
 
 section_start "dnf"
 
+sudo dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm       # rpmfusion:    free
+sudo dnf install -y https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm # rpmfusion: nonfree
+
 sudo /usr/bin/dnf install -y zsh
 sudo /usr/bin/chsh -s /usr/bin/zsh $USER
 
