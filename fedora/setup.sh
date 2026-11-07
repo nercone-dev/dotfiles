@@ -87,8 +87,9 @@ section_start "uv"
 "$HOME/.local/bin/uv" python install 3.10
 "$HOME/.local/bin/uv" python install 3.11
 "$HOME/.local/bin/uv" python install 3.12
-"$HOME/.local/bin/uv" python install 3.13 --default
-"$HOME/.local/bin/uv" python install 3.14
+"$HOME/.local/bin/uv" python install 3.13
+"$HOME/.local/bin/uv" python install 3.14 --default
+"$HOME/.local/bin/uv" python install 3.15
 
 
 section_start "grub"
