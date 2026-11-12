@@ -16,6 +16,7 @@ sudo /usr/bin/dnf install -y zsh
 sudo /usr/bin/chsh -s /usr/bin/zsh $USER
 
 sudo /usr/bin/dnf install -y curl tree htop btop fastfetch libvirt ffmpeg
+sudo /usr/bin/systemctl enable --now libvirtd
 
 sudo /usr/bin/dnf install -y git gh make cmake clang llvm lld ninja wasi-libc-devel wasi-libc-static radare2
 
@@ -28,6 +29,11 @@ sudo /usr/bin/dnf install -y zip tar xz gzip 7zip woff2 woff2-tools libjxl-utils
 sudo /usr/bin/dnf install -y firefox thunderbird # Firefox!!!
 sudo /usr/bin/dnf install -y w3m elinks
 
+sudo /usr/bin/dnf install -y tuned
+sudo /usr/bin/systemctl enable --now tuned
+
+#sudo /usr/bin/dnf install -y cockpit
+#sudo /usr/bin/systemctl enable --now cockpit.socket
 
 section_start "homebrew"
 
