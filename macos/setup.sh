@@ -98,7 +98,7 @@ section_start "fonts"
 NERCONE_FONTS_TMP="$(/usr/bin/mktemp -d)"
 for family in NerconeSans NerconeSerif NerconeMono; do
     /usr/bin/curl -fsSL "https://github.com/nercone-dev/fonts/releases/latest/download/$family.tar.xz" -o "$NERCONE_FONTS_TMP/$family.tar.xz"
-    /usr/bin/tar -xJf "$NERCONE_FONTS_TMP/$family.tar.xz" -C "$NERCONE_FONTS_TMP"
+    /usr/bin/tar -xJf "$NERCONE_FONTS_TMP/$family.tar.xz" -C "$NERCONE_FONTS_TMP" '*/Desktop/TTF/*-Variable*.ttf'
 done
 /bin/mkdir -p "$HOME/Library/Fonts"
 /bin/cp "$NERCONE_FONTS_TMP"/Nercone*/Desktop/TTF/Nercone*-Variable*.ttf "$HOME/Library/Fonts/"

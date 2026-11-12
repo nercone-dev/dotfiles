@@ -134,10 +134,10 @@ git config --global url."git@github.com:".insteadOf "https://github.com/"
 
 section_start "fonts"
 
-NERCONE_FONTS_TMP="$(/usr/bin/mktemp -d)"
+NERCONE_FONTS_TMP="$(/usr/bin/mktemp -d -p /var/tmp)"
 for family in NerconeSans NerconeSerif NerconeMono; do
     /usr/bin/curl -fsSL "https://github.com/nercone-dev/fonts/releases/latest/download/$family.tar.xz" -o "$NERCONE_FONTS_TMP/$family.tar.xz"
-    /usr/bin/tar -xJf "$NERCONE_FONTS_TMP/$family.tar.xz" -C "$NERCONE_FONTS_TMP"
+    /usr/bin/tar -xJf "$NERCONE_FONTS_TMP/$family.tar.xz" -C "$NERCONE_FONTS_TMP" --wildcards '*/Desktop/TTF/*-Variable*.ttf'
 done
 sudo /usr/bin/install -d -m 755 /usr/local/share/fonts/nercone
 sudo /usr/bin/install -m 644 "$NERCONE_FONTS_TMP"/Nercone*/Desktop/TTF/Nercone*-Variable*.ttf /usr/local/share/fonts/nercone/
