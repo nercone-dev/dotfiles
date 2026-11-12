@@ -158,10 +158,9 @@ section_start "bootvine"
 sudo /usr/bin/dnf install -y pkgconf-pkg-config dbus-devel systemd-devel
 
 CC=clang RUSTFLAGS="-C linker=clang" "$HOME/.cargo/bin/cargo" install --locked bootvine
-"$HOME/.cargo/bin/bootvine" install --initrd dracut
+"$HOME/.cargo/bin/bootvine" install
 "$HOME/.cargo/bin/cargo" uninstall bootvine
-sudo /usr/sbin/restorecon -R /usr/bin/bootvine /usr/lib/systemd/system/bootvine.service /usr/lib/systemd/system/bootvine-shutdown.service /usr/lib/systemd/system/systemd-hibernate-resume.service.d /usr/lib/dracut/modules.d/90bootvine /etc/dracut.conf.d/bootvine.conf
-sudo /usr/bin/dracut --force --regenerate-all
+sudo /usr/sbin/restorecon -R /usr/bin/bootvine /usr/lib/systemd/system/bootvine.service /usr/lib/systemd/system/bootvine-shutdown.service /usr/lib/systemd/system/systemd-hibernate-resume.service.d
 
 
 section_start "zsh"
