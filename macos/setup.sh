@@ -16,7 +16,7 @@ section_start "homebrew"
 
 /bin/bash -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-/opt/homebrew/bin/brew install -y curl tree htop btop fastfetch ipatool qemu wakeonlan ffmpeg localsend tailscale-app keyboardcleantool
+/opt/homebrew/bin/brew install -y curl tree rsync htop btop fastfetch ipatool qemu wakeonlan ffmpeg localsend tailscale-app keyboardcleantool
 
 /opt/homebrew/bin/brew install -y git gh coreutils make cmake llvm lld ninja wasi-libc wasi-runtimes radare2
 
