@@ -25,7 +25,7 @@ section_start "homebrew"
 
 /opt/homebrew/bin/brew install -y vim neovim nano
 
-/opt/homebrew/bin/brew install -y nmap osv-scanner openssl@3 openssl@4 gnupg pinentry
+/opt/homebrew/bin/brew install -y nmap osv-scanner openssl@3 openssl@4 gnupg pinentry pinentry-mac
 
 /opt/homebrew/bin/brew install -y zip xz gzip sevenzip woff2 jpeg-xl
 
@@ -77,6 +77,16 @@ section_start "uv"
 "$HOME/.local/bin/uv" python install 3.13
 "$HOME/.local/bin/uv" python install 3.14 --default
 "$HOME/.local/bin/uv" python install 3.15
+
+
+section_start "gpg"
+
+/bin/mkdir -p "$HOME/.gnupg"
+/bin/chmod 700 "$HOME/.gnupg"
+/usr/bin/touch "$HOME/.gnupg/gpg-agent.conf"
+/usr/bin/sed -i '' '/^pinentry-program[[:space:]]/d' "$HOME/.gnupg/gpg-agent.conf"
+echo "pinentry-program /opt/homebrew/bin/pinentry-mac" >> "$HOME/.gnupg/gpg-agent.conf"
+/opt/homebrew/bin/gpgconf --kill gpg-agent
 
 
 section_start "git"
