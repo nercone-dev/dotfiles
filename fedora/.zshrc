@@ -4,8 +4,6 @@ export TERM="xterm-256color"
 # config: gpg
 export GPG_TTY=${TTY}
 
-alias gpg-unlock="echo 'unlocked gpg key' | gpg -u 7BC086D91FD47610 --clear-sign"
-
 # config: nano nano!!!
 export EDITOR="nano"
 
@@ -25,6 +23,9 @@ alias update-dnf="sudo dnf upgrade -y"
 alias update-uv="uv self update && uv python upgrade"
 alias update-rust="rustup upgrade"
 alias update-all="update-dnf && update-uv && update-rust"
+
+# alias: unlock
+alias unlock-gpg="echo 'unlocked gpg key' | gpg -u 7BC086D91FD47610 --clear-sign"
 
 # path: system
 export PATH="/bin"
