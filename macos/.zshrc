@@ -22,7 +22,8 @@ alias pip3="uv pip"
 alias update-brew="brew upgrade -y"
 alias update-uv="uv self update && uv python upgrade"
 alias update-rust="rustup upgrade"
-alias update-all="update-brew && update-uv && update-rust"
+alias update-agents="curl -Lo /Users/nercone/.agents/AGENTS.md https://gist.githubusercontent.com/nercone-dev/539b527efa7b9271e7b299de3826673d/raw/630c43073b746bd3ae3d9496f3a6a1ea5c4e8346/AGENTS.md"
+alias update-all="update-brew && update-uv && update-rust && update-agents"
 
 # alias: unlock
 alias unlock-gpg="echo 'unlocked gpg key' | gpg -u 7BC086D91FD47610 --clear-sign"

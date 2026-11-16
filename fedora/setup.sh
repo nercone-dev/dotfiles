@@ -169,6 +169,15 @@ CC=clang RUSTFLAGS="-C linker=clang" "$HOME/.cargo/bin/cargo" install --locked b
 sudo /usr/sbin/restorecon -R /usr/bin/bootvine /usr/lib/systemd/system/bootvine.service /usr/lib/systemd/system/bootvine-shutdown.service /usr/lib/systemd/system/systemd-hibernate-resume.service.d
 
 
+section_start "agents.md"
+
+mkdir -p ~/.agents
+curl -Lo /Users/nercone/.agents/AGENTS.md https://gist.githubusercontent.com/nercone-dev/539b527efa7b9271e7b299de3826673d/raw/630c43073b746bd3ae3d9496f3a6a1ea5c4e8346/AGENTS.md
+
+mkdir -p ~/.claude
+ln -s /Users/nercone/.agents/AGENTS.md /Users/nercone/.claude/CLAUDE.md
+
+
 section_start "zsh"
 
 /bin/cp $HOME/.zshrc $HOME/.zshrc.bak
