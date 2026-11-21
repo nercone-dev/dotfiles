@@ -28,9 +28,6 @@ alias update-all="update-brew && update-uv && update-rust && update-agents"
 # alias: unlock
 alias unlock-gpg="echo 'unlocked gpg key' | gpg -u 7BC086D91FD47610 --clear-sign"
 
-# alias: backup
-alias backup-nexternal="rsync -av --stats --exclude='.Spotlight-V100' --exclude='.Trashes' --exclude='.TemporaryItems' --exclude='.fseventsd' --exclude='.DocumentRevisions-V100' '/Volumes/Nexternal/' '/Volumes/Nexternal Backup/'"
-
 # path: system
 export PATH="/bin"
 export PATH="/sbin:$PATH"
