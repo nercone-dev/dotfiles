@@ -77,5 +77,8 @@ export PATH="$HOME/.local/sbin:$PATH"
 # path: cargo
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# path: docker
+export PATH="$HOME/.docker/bin:$PATH"
+
 # path: android
 export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
