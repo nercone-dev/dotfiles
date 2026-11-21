@@ -52,6 +52,11 @@ NONINTERACTIVE=1 /bin/bash -c "$(/usr/bin/curl -fsSL https://raw.githubuserconte
 /home/linuxbrew/.linuxbrew/bin/brew install -y w3m felinks chawan
 
 
+section_start "openjdk"
+
+sudo /usr/bin/dnf install -y java-1.8.0-openjdk-devel java-11-openjdk-devel java-17-openjdk-devel java-21-openjdk-devel java-25-openjdk-devel
+
+
 section_start "oh-my-zsh"
 
 /bin/sh -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended

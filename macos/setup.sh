@@ -33,6 +33,14 @@ section_start "homebrew"
 /opt/homebrew/bin/brew install -y w3m felinks chawan
 
 
+section_start "openjdk"
+
+for version in 8 11 17 21 25; do
+    /opt/homebrew/bin/brew install -y "openjdk@$version"
+    sudo /bin/ln -sfn "/opt/homebrew/opt/openjdk@$version/libexec/openjdk.jdk" "/Library/Java/JavaVirtualMachines/openjdk-$version.jdk"
+done
+
+
 section_start "oh-my-zsh"
 
 /bin/sh -c "$(/usr/bin/curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
